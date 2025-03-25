@@ -9,6 +9,7 @@ export const checkContactAccess = async (req, res, next) => {
   }
 
   const { contactId } = req.params;
+
   if (!contactId) {
     next(createHttpError(403));
     return;
