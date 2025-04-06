@@ -1,0 +1,28 @@
+type: object
+required:
+  - _id
+  - name
+  - email
+  - phone
+properties:
+  _id:
+    description: 'Contact ID'
+    type: string
+    example: 65e4decdd286b30065d54af9
+  name:
+    description: 'Contact name'
+    type: string
+    example: 'John Doe'
+  email:
+    description: 'Contact email'
+    type: string
+    format: email
+    example: 'john.doe@example.com'
+  phone:
+    description: 'Contact phone number'
+    type: string
+    example: '+380991234567'
+  favorite:
+    description: 'Whether contact is favorite'
+    type: boolean
+    example: false

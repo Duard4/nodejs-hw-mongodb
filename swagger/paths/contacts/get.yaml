@@ -1,0 +1,71 @@
+tags:
+  - Contacts
+summary: Get all contacts
+operationId: getContacts
+description: 'Retrieve a list of contacts with pagination options'
+security:
+  - bearerAuth: []
+parameters:
+  - in: query
+    name: page
+    schema:
+      type: integer
+    example: 1
+    description: 'Page number'
+  - in: query
+    name: limit
+    schema:
+      type: integer
+      example: 10
+    description: 'Number of contacts per page'
+  - in: query
+    name: favorite
+    schema:
+      type: boolean
+      example: true
+    description: 'Filter contacts by favorite status'
+responses:
+  '200':
+    description: Successfully retrieved contacts!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully found contacts!
+            data:
+              type: object
+              required:
+                - contacts
+                - page
+                - limit
+                - totalItems
+                - totalPages
+              properties:
+                contacts:
+                  type: array
+                  items:
+                    $ref: '../../components/schemas/contact.yaml'
+                page:
+                  type: number
+                  example: 2
+                limit:
+                  type: number
+                  example: 4
+                totalItems:
+                  type: number
+                  example: 14
+                totalPages:
+                  type: number
+                  example: 4
+  '401':
+    $ref: '../../components/responses/401.yaml'
