@@ -14,27 +14,36 @@ parameters:
       example: '65ca67e7ae7f10c88b598384'
 requestBody:
   content:
-    application/json:
+    multipart/form-data:
       schema:
         type: object
         properties:
           name:
             description: 'Contact name'
             type: string
-            example: 'Jane Smith'
+            example: 'BB BBylich'
+          phoneNumber:
+            description: 'Contact phone number'
+            type: string
+            example: '+380000220001'
           email:
             description: 'Contact email'
             type: string
             format: email
-            example: 'jane.smith@example.com'
-          phone:
-            description: 'Contact phone number'
-            type: string
-            example: '+380991234567'
-          favorite:
-            description: 'Whether contact is favorite'
+            example: 'bb@example.com'
+          isFavourite:
+            description: 'Whether contact is favourite'
             type: boolean
             example: true
+          contactType:
+            description: 'Type of contact'
+            type: string
+            enum: ['work', 'home', 'personal']
+            example: 'personal'
+          photo:
+            description: 'Contact photo'
+            type: string
+            format: binary
 responses:
   '200':
     description: Contact updated successfully

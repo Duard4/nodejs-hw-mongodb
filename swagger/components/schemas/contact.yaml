@@ -2,27 +2,53 @@ type: object
 required:
   - _id
   - name
-  - email
-  - phone
+  - phoneNumber
+  - contactType
+  - userId
 properties:
   _id:
     description: 'Contact ID'
     type: string
-    example: 65e4decdd286b30065d54af9
+    example: '65e4decdd286b30065d54af9'
   name:
     description: 'Contact name'
     type: string
     example: 'John Doe'
+  phoneNumber:
+    description: 'Contact phone number'
+    type: string
+    example: '+380991234567'
   email:
     description: 'Contact email'
     type: string
     format: email
     example: 'john.doe@example.com'
-  phone:
-    description: 'Contact phone number'
-    type: string
-    example: '+380991234567'
-  favorite:
-    description: 'Whether contact is favorite'
+  isFavourite:
+    description: 'Whether contact is favourite'
     type: boolean
     example: false
+    default: false
+  contactType:
+    description: 'Type of contact'
+    type: string
+    enum: ['work', 'home', 'personal']
+    default: 'personal'
+    example: 'work'
+  userId:
+    description: 'User ID reference'
+    type: string
+    example: '65e4decdd286b30065d54af9'
+  photo:
+    description: 'Contact photo URL'
+    type: string
+    example: 'https://example.com/photos/avatar.jpg'
+  createdAt:
+    description: 'Creation timestamp'
+    type: string
+    format: date-time
+    example: '2023-01-01T12:00:00.000Z'
+  updatedAt:
+    description: 'Last update timestamp'
+    type: string
+    format: date-time
+    example: '2023-01-01T12:00:00.000Z'

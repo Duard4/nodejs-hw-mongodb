@@ -7,23 +7,47 @@ security:
   - bearerAuth: []
 parameters:
   - in: query
+    name: userId
+    schema:
+      type: string
+    example: '65e4decdd286b30065d54af9'
+    description: 'User ID to filter contacts'
+  - in: query
     name: page
     schema:
       type: integer
     example: 1
     description: 'Page number'
+    required: false
   - in: query
-    name: limit
+    name: perPage
     schema:
       type: integer
       example: 10
     description: 'Number of contacts per page'
+    required: false
   - in: query
-    name: favorite
+    name: sortBy
+    schema:
+      type: string
+      example: '_id'
+    description: 'Field to sort by'
+    required: false
+  - in: query
+    name: sortOrder
+    schema:
+      type: string
+      enum: ['asc', 'desc']
+      example: 'asc'
+    description: 'Sort order'
+    required: false
+  - in: query
+    name: filter[isFavourite]
     schema:
       type: boolean
       example: true
-    description: 'Filter contacts by favorite status'
+    description: 'Filter contacts by favourite status'
+    required: false
 responses:
   '200':
     description: Successfully retrieved contacts!
@@ -45,22 +69,22 @@ responses:
             data:
               type: object
               required:
-                - contacts
+                - data
                 - page
-                - limit
+                - perPage
                 - totalItems
                 - totalPages
               properties:
-                contacts:
+                data:
                   type: array
                   items:
                     $ref: '../../components/schemas/contact.yaml'
                 page:
                   type: number
                   example: 2
-                limit:
+                perPage:
                   type: number
-                  example: 4
+                  example: 10
                 totalItems:
                   type: number
                   example: 14

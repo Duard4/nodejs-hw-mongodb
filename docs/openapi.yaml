@@ -11,7 +11,7 @@ tags:
     description: Операції з контактами.
 servers:
   - url: http://localhost:3000
-  - url: https://example.com/api/v1
+  - url: https://contacts-app-56zr.onrender.com
 paths:
   /contacts:
     get:
